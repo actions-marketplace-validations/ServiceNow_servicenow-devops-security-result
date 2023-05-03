@@ -1,0 +1,31 @@
+{
+  "name": "servicenow-devops-security-result",
+  "version": "1.0.0",
+  "description": "servicenow devops security results",
+  "main": "dist/index.js",
+  "private": false,
+  "scripts": {
+    "build": "ncc build src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ServiceNow/servicenow-devops-security-result.git"
+  },
+  "keywords": [
+    "devops",
+    "servicenow",
+    "security"
+  ],
+  "author": "ServiceNow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ServiceNow/servicenow-devops-security-result/issues"
+  },
+  "homepage": "https://github.com/ServiceNow/servicenow-devops-security-resultt#readme",
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "axios": "^1.2.1",
+    "follow-redirects": "^1.15.0",
+    "@vercel/ncc": "^0.34.0"
+  }
+}

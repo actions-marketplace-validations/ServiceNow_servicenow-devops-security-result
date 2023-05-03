@@ -1,0 +1,32 @@
+name: 'ServiceNow DevOps Security Results'
+description: 'Send Security Results to ServiceNow Devops'
+inputs:
+  instance-url: 
+    description: 'ServiceNow Instance URL'
+    required: true
+  devops-integration-user-name:
+    description: 'Devops Integration User Name'
+    required: true
+  devops-integration-user-password:
+    description: 'Devops Integration User Password'
+    required: true
+  security-tool-id:
+    description: 'Security Tool Id'
+    required: true
+  context-github:
+    description: 'Github Context'
+    required: true
+  job-name:
+    description: 'Display Name of the Job'
+    required: true
+  security-result-attributes: 
+    description: 'Security Results Attributes'
+  tool-id:
+    description: 'Orchestration Tool Id'
+    required: true
+branding:
+  icon: 'refresh-ccw'
+  color: 'green'
+runs: 
+  using: 'node12'
+  main: 'dist/index.js'
