@@ -37,7 +37,7 @@ deploy:
           context-github: ${{ toJSON(github) }}
           job-name: 'Deploy'
           security-tool-id: '3f3382b4479a615060f22fe4126d431d'
-          security-result-attributes:  '{<JSON with scan info>}'
+          security-result-attributes:  '{ "applicationName": "VeracodeAPP", "buildVersion": "V1" }'
 ```
 The values for secrets should be setup in Step 1. Secrets should be created in Step 2.
 
@@ -64,6 +64,17 @@ The values for secrets should be setup in Step 1. Secrets should be created in S
 **Required**  Github context contains information about the workflow run details.
 
 
+### `security-tool-id`
+
+**Required**  Security Tool Id 
+
+### `security-result-attributes`
+**Required**  Security Result Attributes
+
+
+## Outputs
+No outputs produced.
+
 # Notices
 
 ## Support Model
@@ -72,4 +83,4 @@ ServiceNow customers may request support through the [Now Support (HI) portal](h
 
 ## Governance Model
 
-l
+Initially, ServiceNow product management and engineering representatives will own governance of these integrations to ensure consistency with roadmap direction. In the longer term, we hope that contributors from customers and our community developers will help to guide prioritization and maintenance of these integrations. At that point, this governance model can be updated to reflect a broader pool of contributors and maintainers. 
