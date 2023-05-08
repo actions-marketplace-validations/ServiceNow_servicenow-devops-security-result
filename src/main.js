@@ -18,6 +18,7 @@ const axios = require('axios');
         core.setFailed(`Exception parsing github context ${e}`);
     }
 
+
     try {
         securityResultAttributes = JSON.parse(securityResultAttributes);
     } catch (e) {
@@ -57,8 +58,8 @@ const axios = require('axios');
         return;
     }
 
-    let result;
-    const endpoint = `${instanceUrl}/api/sn_devops/devops/tool/security?toolId=${toolId}`;
+    let responseData;
+    const endpoint = `${instanceUrl}/api/sn_devops/v1/devops/tool/security?toolId=${toolId}`;
 
     try {
         const token = `${username}:${password}`;
@@ -70,15 +71,22 @@ const axios = require('axios');
             'Authorization': 'Basic ' + `${encodedToken}`
         };
 
+        console.log("Security scan details registration payload: \n " + JSON.stringify(payload));
+
         let httpHeaders = { headers: defaultHeaders };
-        result = await axios.post(endpoint, JSON.stringify(payload), httpHeaders);
+        responseData = await axios.post(endpoint, JSON.stringify(payload), httpHeaders);
+
+        if (responseData.data && responseData.data.result)
+            console.log("\n \x1b[1m\x1b[32m SUCCESS: Security Scan registration was successful" + '\x1b[0m\x1b[0m');
+        else
+            console.log("FAILED: Security Scan could not be registered");
     } catch (e) {
         if (e.message.includes('ECONNREFUSED') || e.message.includes('ENOTFOUND') || e.message.includes('405')) {
             core.setFailed('ServiceNow Instance URL is NOT valid. Please correct the URL and try again.');
         } else if (e.message.includes('401')) {
             core.setFailed('Invalid Credentials. Please correct the credentials and try again.');
         } else {
-            core.setFailed(`ServiceNow Security Results are NOT created. Please check ServiceNow logs for more details.`);
+            core.setFailed(`ServiceNow Software Quality Results are NOT created. Please check ServiceNow logs for more details.`);
         }
     }
 
