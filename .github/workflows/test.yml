@@ -38,5 +38,4 @@ jobs:
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
           job-name: "Servicenow Security Scan Results"
-          security-tool-id: "3f3382b4479a615060f22fe4126d431d"
-          security-result-attributes: '{ "applicationName": "VeracodeAPP", "buildVersion": "V1" }'
+          security-result-attributes: '{ "applicationName": "VeracodeAPP", "buildVersion": "V1", "securityToolId","3f3382b4479a615060f22fe4126d431d" }'

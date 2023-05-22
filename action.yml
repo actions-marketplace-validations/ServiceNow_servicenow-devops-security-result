@@ -10,9 +10,6 @@ inputs:
   devops-integration-user-password:
     description: 'Devops Integration User Password'
     required: true
-  security-tool-id:
-    description: 'Security Tool Id'
-    required: true
   context-github:
     description: 'Github Context'
     required: true

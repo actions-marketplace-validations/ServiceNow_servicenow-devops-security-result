@@ -36,8 +36,7 @@ deploy:
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
           job-name: 'Deploy'
-          security-tool-id: '3f3382b4479a615060f22fe4126d431d'
-          security-result-attributes:  '{ "applicationName": "VeracodeAPP", "buildVersion": "V1" }'
+          security-result-attributes:  '{ "applicationName": "VeracodeAPP", "buildVersion": "V1", "securityToolId":"3f3382b4479a615060f22fe4126d431d" }'
 ```
 The values for secrets should be setup in Step 1. Secrets should be created in Step 2.
 
@@ -63,12 +62,8 @@ The values for secrets should be setup in Step 1. Secrets should be created in S
 
 **Required**  Github context contains information about the workflow run details.
 
-
-### `security-tool-id`
-
-**Required**  Security Tool Id 
-
 ### `security-result-attributes`
+
 **Required**  Security Result Attributes
 
 

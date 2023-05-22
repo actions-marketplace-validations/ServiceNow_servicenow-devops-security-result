@@ -9324,7 +9324,6 @@ const axios = __nccwpck_require__(8757);
 
 (async function main() {
     let instanceUrl = core.getInput('instance-url', { required: true });
-    const securityToolId = core.getInput('security-tool-id', { required: true });
     const toolId = core.getInput('tool-id', { required: true });
     const username = core.getInput('devops-integration-user-name', { required: true });
     const password = core.getInput('devops-integration-user-password', { required: true });
@@ -9369,7 +9368,6 @@ const axios = __nccwpck_require__(8757);
 
         payload = {
             pipelineInfo: pipelineInfo,
-            securityToolId: securityToolId,
             securityResultAttributes: securityResultAttributes
         };
 
@@ -9407,7 +9405,7 @@ const axios = __nccwpck_require__(8757);
         } else if (e.message.includes('401')) {
             core.setFailed('Invalid Credentials. Please correct the credentials and try again.');
         } else {
-            core.setFailed(`ServiceNow Software Quality Results are NOT created. Please check ServiceNow logs for more details.`);
+            core.setFailed(`ServiceNow Security Results are NOT created. Please check ServiceNow logs for more details.`);
         }
     }
 
