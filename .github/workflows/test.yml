@@ -26,10 +26,10 @@ jobs:
   SecurityScanResults:
     needs: build
     runs-on: ubuntu-latest
-    name: Servicenow Security Scan Results
+    name: ServiceNow DevOps Security Results
 
     steps:
-      - name: ServiceNow Security Scan Results
+      - name: ServiceNow DevOps Security Results
         uses: ServiceNow/servicenow-devops-security-result@main
         with:
           devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}

@@ -27,7 +27,7 @@ deploy:
     needs: <upstream job>
     runs-on: ubuntu-latest
     steps:     
-      - name: ServiceNow Security Scan Results
+      - name: ServiceNow DevOps Security Results
         uses: ServiceNow/servicenow-devops-security-result@main
         with:
           devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
