@@ -9420,7 +9420,7 @@ const axios = __nccwpck_require__(8757);
         } else if (e.message.includes('401')) {
             core.setFailed('Invalid Credentials. Please correct the credentials and try again.');
         } else {
-            core.setFailed(`ServiceNow Software Quality Results are NOT created. Please check ServiceNow logs for more details.`);
+            core.setFailed(`ServiceNow Security Scan Results are NOT created. Please check ServiceNow logs for more details.`);
         }
     }
 
