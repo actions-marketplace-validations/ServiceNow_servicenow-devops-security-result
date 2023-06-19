@@ -6,10 +6,11 @@ inputs:
     required: true
   devops-integration-user-name:
     description: 'Devops Integration User Name'
-    required: true
   devops-integration-user-password:
     description: 'Devops Integration User Password'
-    required: true
+  devops-integration-token:
+    description: 'Devops Integration Token'
+    required: false
   context-github:
     description: 'Github Context'
     required: true
