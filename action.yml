@@ -10,7 +10,6 @@ inputs:
     description: 'Devops Integration User Password'
   devops-integration-token:
     description: 'Devops Integration Token'
-    required: false
   context-github:
     description: 'Github Context'
     required: true
