@@ -29,7 +29,7 @@ Use needs to configure the identified upstream job. See [test.yml](.github/workf
 
 ## Step 4: Configure the GitHub Action if need to adapt for your needs or workflows
 
-# For Token based Authentication which is available from v1.39.0 at ServiceNow instance
+# For Token based Authentication which is available from v2.0 at ServiceNow instance
 ```yaml
 deploy:
     name: Deploy
@@ -37,7 +37,7 @@ deploy:
     runs-on: ubuntu-latest
     steps:     
       - name: ServiceNow DevOps Security Results
-        uses: ServiceNow/servicenow-devops-security-result@main
+        uses: ServiceNow/servicenow-devops-security-result@v2.0
         with:
           devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
@@ -54,7 +54,7 @@ deploy:
     runs-on: ubuntu-latest
     steps:     
       - name: ServiceNow DevOps Security Results
-        uses: ServiceNow/servicenow-devops-security-result@main
+        uses: ServiceNow/servicenow-devops-security-result@v2.0
         with:
           devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
           devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
