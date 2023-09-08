@@ -17,7 +17,8 @@ inputs:
     description: 'Display Name of the Job'
     required: true
   security-result-attributes: 
-    description: 'Security Results Attributes'
+    description: 'Security Results Attributes: For more information on defining the security attributes, View full Marketplace listing link above'
+    required: true
   tool-id:
     description: 'Orchestration Tool Id'
     required: true
@@ -25,5 +26,5 @@ branding:
   icon: 'refresh-ccw'
   color: 'green'
 runs: 
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'

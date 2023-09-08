@@ -30,6 +30,8 @@ Use needs to configure the identified upstream job. See [test.yml](.github/workf
 ## Step 4: Configure the GitHub Action if need to adapt for your needs or workflows
 
 # For Token based Authentication which is available from v2.0.0 at ServiceNow instance
+
+### GitHub-Veracode:
 ```yaml
 deploy:
     name: Deploy
@@ -44,9 +46,48 @@ deploy:
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
           job-name: 'Deploy'
-          security-result-attributes:  '{"scanner":"Veracode","applicationName":"azure","buildVersion":"jenkins-Veracode with Step-27"}'
+          security-result-attributes:  '{"scanner": "Veracode", "applicationName": "", "buildVersion": "",  "securityToolId": ""}'
 ```
+
+### GitHub-CheckmarxOne:
+```yaml
+deploy:
+    name: Deploy
+    needs: <upstream job>
+    runs-on: ubuntu-latest
+    steps:     
+      - name: ServiceNow DevOps Security Results
+        uses: ServiceNow/servicenow-devops-security-result@v2.0.0
+        with:
+          devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
+          instance-url: ${{ secrets.SN_INSTANCE_URL }}
+          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+          context-github: ${{ toJSON(github) }}
+          job-name: 'Deploy'
+          security-result-attributes:  '{"scanner": "CheckmarxOne", "projectName": "", "projectId": "", "scanId":"", "securityToolId": ""}'
+```
+
+### GitHub-CheckmarxSAST:
+```yaml
+deploy:
+    name: Deploy
+    needs: <upstream job>
+    runs-on: ubuntu-latest
+    steps:     
+      - name: ServiceNow DevOps Security Results
+        uses: ServiceNow/servicenow-devops-security-result@v2.0.0
+        with:
+          devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
+          instance-url: ${{ secrets.SN_INSTANCE_URL }}
+          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+          context-github: ${{ toJSON(github) }}
+          job-name: 'Deploy'
+          security-result-attributes:  '{"scanner": "CheckmarxSAST", "projectName": "", "projectId": "","securityToolId": ""}'
+```
+
 # For Basic Authentication at ServiceNow instance
+
+### GitHub-Veracode:
 ```yaml
 deploy:
     name: Deploy
@@ -62,7 +103,45 @@ deploy:
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
           job-name: 'Deploy'
-          security-result-attributes:  '{"scanner":"Veracode","applicationName":"azure","buildVersion":"jenkins-Veracode with Step-27"}'
+          security-result-attributes:  '{"scanner": "Veracode", "applicationName": "", "buildVersion": "",  "securityToolId": ""}'
+```
+
+### GitHub-CheckmarxOne:
+```yaml
+deploy:
+    name: Deploy
+    needs: <upstream job>
+    runs-on: ubuntu-latest
+    steps:     
+      - name: ServiceNow DevOps Security Results
+        uses: ServiceNow/servicenow-devops-security-result@v2.0.0
+        with:
+          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
+          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+          instance-url: ${{ secrets.SN_INSTANCE_URL }}
+          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+          context-github: ${{ toJSON(github) }}
+          job-name: 'Deploy'
+          security-result-attributes:  '{"scanner": "CheckmarxOne", "projectName": "", "projectId": "", "scanId":"", "securityToolId": ""}'
+```
+
+### GitHub-CheckmarxSAST:
+```yaml
+deploy:
+    name: Deploy
+    needs: <upstream job>
+    runs-on: ubuntu-latest
+    steps:     
+      - name: ServiceNow DevOps Security Results
+        uses: ServiceNow/servicenow-devops-security-result@v2.0.0
+        with:
+          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
+          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+          instance-url: ${{ secrets.SN_INSTANCE_URL }}
+          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+          context-github: ${{ toJSON(github) }}
+          job-name: 'Deploy'
+          security-result-attributes:  '{"scanner": "CheckmarxSAST", "projectName": "", "projectId": "","securityToolId": ""}'
 ```
 The values for secrets should be setup in Step 1. Secrets should be created in Step 2.
 
@@ -98,13 +177,19 @@ The values for secrets should be setup in Step 1. Secrets should be created in S
 
   ```
   {
-  applicationName: # Name of your Veracode application and is required. This attribute is applicable only for Veracode.
+	"scanner": "", # Scanning tool and is required e.g. Veracode or CheckmarxOne or CheckmarxSAST
 
-  scanner:  # Scanning tool and is required e.g. Veracode.
+	"applicationName": "", # Name of your Veracode application and is required. This attribute is applicable only for Veracode.
 
-  buildVersion: # Veracode Scan name / build version and is optional. This attribute is applicable only for Veracode.
+	"buildVersion": "", # Veracode Scan name / build version and is optional. This attribute is applicable only for Veracode.
 
-  securityToolId: # Security tool onboarded in ServiceNow (sys_id of the onboarded security tool) and is optional.
+	"projectName": "", # Name of your CheckMarxOne project and is required. This attribute is applicable only for Checkmarx One.
+
+	"projectId": "", # Id of your CheckMarxOne / CheckmarxSAST project and is required. This attribute is applicable only for CheckMarxOne and CheckmarxSAST.
+	
+	"scanId": "", # CheckmarxOne scan id and is optional. This attribute is applicable only for Checkmarx One.
+
+	"securityToolId": "" # Security tool onboarded in ServiceNow (sys_id of the onboarded security tool) and is optional.
   }
   ```
 
