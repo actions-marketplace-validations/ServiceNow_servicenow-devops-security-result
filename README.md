@@ -49,7 +49,7 @@ deploy:
           security-result-attributes:  '{"scanner": "Veracode", "applicationName": "", "buildVersion": "",  "securityToolId": ""}'
 ```
 
-### GitHub-CheckmarxOne:
+### GitHub-Checkmarx One:
 ```yaml
 deploy:
     name: Deploy
@@ -64,10 +64,10 @@ deploy:
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
           job-name: 'Deploy'
-          security-result-attributes:  '{"scanner": "CheckmarxOne", "projectName": "", "projectId": "", "scanId":"", "securityToolId": ""}'
+          security-result-attributes:  '{"scanner": "Checkmarx One", "projectName": "", "projectId": "", "scanId":"", "securityToolId": ""}'
 ```
 
-### GitHub-CheckmarxSAST:
+### GitHub-Checkmarx SAST:
 ```yaml
 deploy:
     name: Deploy
@@ -82,7 +82,7 @@ deploy:
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
           job-name: 'Deploy'
-          security-result-attributes:  '{"scanner": "CheckmarxSAST", "projectName": "", "projectId": "","securityToolId": ""}'
+          security-result-attributes:  '{"scanner": "Checkmarx SAST", "projectName": "", "projectId": "","securityToolId": ""}'
 ```
 
 # For Basic Authentication at ServiceNow instance
@@ -106,7 +106,7 @@ deploy:
           security-result-attributes:  '{"scanner": "Veracode", "applicationName": "", "buildVersion": "",  "securityToolId": ""}'
 ```
 
-### GitHub-CheckmarxOne:
+### GitHub-Checkmarx One:
 ```yaml
 deploy:
     name: Deploy
@@ -122,10 +122,10 @@ deploy:
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
           job-name: 'Deploy'
-          security-result-attributes:  '{"scanner": "CheckmarxOne", "projectName": "", "projectId": "", "scanId":"", "securityToolId": ""}'
+          security-result-attributes:  '{"scanner": "Checkmarx One", "projectName": "", "projectId": "", "scanId":"", "securityToolId": ""}'
 ```
 
-### GitHub-CheckmarxSAST:
+### GitHub-Checkmarx SAST:
 ```yaml
 deploy:
     name: Deploy
@@ -141,7 +141,7 @@ deploy:
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
           job-name: 'Deploy'
-          security-result-attributes:  '{"scanner": "CheckmarxSAST", "projectName": "", "projectId": "","securityToolId": ""}'
+          security-result-attributes:  '{"scanner": "Checkmarx SAST", "projectName": "", "projectId": "","securityToolId": ""}'
 ```
 The values for secrets should be setup in Step 1. Secrets should be created in Step 2.
 
@@ -177,17 +177,17 @@ The values for secrets should be setup in Step 1. Secrets should be created in S
 
   ```
   {
-	"scanner": "", # Scanning tool and is required e.g. Veracode or CheckmarxOne or CheckmarxSAST
+	"scanner": "", # Scanning tool and is required e.g. Veracode or Checkmarx One or Checkmarx SAST
 
 	"applicationName": "", # Name of your Veracode application and is required. This attribute is applicable only for Veracode.
 
 	"buildVersion": "", # Veracode Scan name / build version and is optional. This attribute is applicable only for Veracode.
 
-	"projectName": "", # Name of your CheckMarxOne project and is required. This attribute is applicable only for Checkmarx One.
+	"projectName": "", # Name of your Checkmarx One project and is required. This attribute is applicable only for Checkmarx One.
 
-	"projectId": "", # Id of your CheckMarxOne / CheckmarxSAST project and is required. This attribute is applicable only for CheckMarxOne and CheckmarxSAST.
+	"projectId": "", # Id of your Checkmarx One / Checkmarx SAST project and is required. This attribute is applicable only for Checkmarx One and Checkmarx SAST.
 	
-	"scanId": "", # CheckmarxOne scan id and is optional. This attribute is applicable only for Checkmarx One.
+	"scanId": "", # Checkmarx One scan id and is optional. This attribute is applicable only for Checkmarx One.
 
 	"securityToolId": "" # Security tool onboarded in ServiceNow (sys_id of the onboarded security tool) and is optional.
   }
