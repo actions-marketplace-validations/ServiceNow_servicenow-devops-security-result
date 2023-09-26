@@ -39,7 +39,7 @@ Use needs to configure the identified upstream job. See [test.yml](.github/workf
     name: ServiceNow Security Scan Results
     steps:
       - name: ServiceNow DevOps Security Results
-        uses: ServiceNow/servicenow-devops-security-result@v2.0.0
+        uses: ServiceNow/servicenow-devops-security-result@v3.0.0
         with:
             # DevOps Integration Token of GitHub tool created in ServiceNow instance for token based authentication.
             devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
@@ -66,7 +66,7 @@ Use needs to configure the identified upstream job. See [test.yml](.github/workf
     name: ServiceNow Security Scan Results
     steps:
       - name: ServiceNow DevOps Security Results
-        uses: ServiceNow/servicenow-devops-security-result@v2.0.0
+        uses: ServiceNow/servicenow-devops-security-result@v3.0.0
         with:
             # DevOps Integration Token of GitHub tool created in ServiceNow instance for token based authentication.
             devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
@@ -93,7 +93,7 @@ ServiceNowSecurityScanResults:
     name: ServiceNow Security Scan Results
     steps:
       - name: ServiceNow DevOps Security Results
-        uses: ServiceNow/servicenow-devops-security-result@v2.0.0
+        uses: ServiceNow/servicenow-devops-security-result@v3.0.0
         with:
             # DevOps Integration Token of GitHub tool created in ServiceNow instance for token based authentication.
             devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
@@ -121,7 +121,7 @@ ServiceNowSecurityScanResults:
     name: ServiceNow Security Scan Results
     steps:
       - name: ServiceNow DevOps Security Results
-        uses: ServiceNow/servicenow-devops-security-result@v2.0.0
+        uses: ServiceNow/servicenow-devops-security-result@v3.0.0
         with:
             # Devops Integration User Name
             devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
@@ -150,7 +150,7 @@ ServiceNowSecurityScanResults:
     name: ServiceNow Security Scan Results
     steps:
       - name: ServiceNow DevOps Security Results
-        uses: ServiceNow/servicenow-devops-security-result@v2.0.0
+        uses: ServiceNow/servicenow-devops-security-result@v3.0.0
         with:
             # Devops Integration User Name
             devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
@@ -179,7 +179,7 @@ ServiceNowSecurityScanResults:
     name: ServiceNow Security Scan Results
     steps:
       - name: ServiceNow DevOps Security Results
-        uses: ServiceNow/servicenow-devops-security-result@v2.0.0
+        uses: ServiceNow/servicenow-devops-security-result@v3.0.0
         with:
             # Devops Integration User Name
             devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
