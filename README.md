@@ -33,115 +33,170 @@ Use needs to configure the identified upstream job. See [test.yml](.github/workf
 
 ### GitHub-Veracode:
 ```yaml
-deploy:
-    name: Deploy
-    needs: <upstream job>
+  ServiceNowSecurityScanResults:
+    # type of machine to run the job on
     runs-on: ubuntu-latest
-    steps:     
+    name: ServiceNow Security Scan Results
+    steps:
       - name: ServiceNow DevOps Security Results
-        uses: ServiceNow/servicenow-devops-security-result@v3.0.0
+        uses: ServiceNow/servicenow-devops-security-result@v2.0.0
         with:
-          devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
-          instance-url: ${{ secrets.SN_INSTANCE_URL }}
-          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-          context-github: ${{ toJSON(github) }}
-          job-name: 'Deploy'
-          security-result-attributes:  '{"scanner": "Veracode", "applicationName": "", "buildVersion": "",  "securityToolId": ""}'
+            # DevOps Integration Token of GitHub tool created in ServiceNow instance for token based authentication.
+            devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
+            # ServiceNow Instance URL
+            instance-url: ${{ secrets.SN_INSTANCE_URL }}
+            # Orchestration Tool Id
+            tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+            # GitHub Context
+            context-github: ${{ toJSON(github) }}
+            # Display Name of the Job
+            job-name: 'ServiceNow Security Scan Results'
+            security-result-attributes: '{"scanner": "Veracode", "applicationName": "", "buildVersion": "", "securityToolId": ""}'
+            # scanner: Scanning tool and is required e.g. Veracode.
+            # applicationName: Name of your Veracode application and is required. This attribute is applicable only for Veracode.
+            # buildVersion: Veracode Scan name / build version and is optional. This attribute is applicable only for Veracode.
+            # securityToolId: Security tool onboarded in ServiceNow (sys_id of the onboarded security tool) and is optional.
 ```
 
 ### GitHub-Checkmarx One:
 ```yaml
-deploy:
-    name: Deploy
-    needs: <upstream job>
+  ServiceNowSecurityScanResults:
+    # type of machine to run the job on
     runs-on: ubuntu-latest
-    steps:     
+    name: ServiceNow Security Scan Results
+    steps:
       - name: ServiceNow DevOps Security Results
-        uses: ServiceNow/servicenow-devops-security-result@v3.0.0
+        uses: ServiceNow/servicenow-devops-security-result@v2.0.0
         with:
-          devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
-          instance-url: ${{ secrets.SN_INSTANCE_URL }}
-          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-          context-github: ${{ toJSON(github) }}
-          job-name: 'Deploy'
-          security-result-attributes:  '{"scanner": "Checkmarx One", "projectName": "", "projectId": "", "scanId":"", "securityToolId": ""}'
+            # DevOps Integration Token of GitHub tool created in ServiceNow instance for token based authentication.
+            devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
+            # ServiceNow Instance URL
+            instance-url: ${{ secrets.SN_INSTANCE_URL }}
+            # Orchestration Tool Id
+            tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+            # GitHub Context
+            context-github: ${{ toJSON(github) }}
+            # Display Name of the Job
+            job-name: 'ServiceNow Security Scan Results'
+            security-result-attributes: '{"scanner": "Checkmarx One", "projectName": "", "projectId": "", "scanId": "", "securityToolId": ""}'
+            # scanner: Scanning tool and is required e.g. Checkmarx One.
+            # projectName/projectId: Name/Id of your Checkmarx One project and is required. This attribute is applicable only for Checkmarx One.
+            # scanId: Checkmarx One scan id and is optional. This attribute is applicable only for Checkmarx One.
+            # securityToolId: Security tool onboarded in ServiceNow (sys_id of the onboarded security tool) and is optional.
 ```
 
 ### GitHub-Checkmarx SAST:
 ```yaml
-deploy:
-    name: Deploy
-    needs: <upstream job>
+ServiceNowSecurityScanResults:
+    # type of machine to run the job on
     runs-on: ubuntu-latest
-    steps:     
+    name: ServiceNow Security Scan Results
+    steps:
       - name: ServiceNow DevOps Security Results
-        uses: ServiceNow/servicenow-devops-security-result@v3.0.0
+        uses: ServiceNow/servicenow-devops-security-result@v2.0.0
         with:
-          devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
-          instance-url: ${{ secrets.SN_INSTANCE_URL }}
-          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-          context-github: ${{ toJSON(github) }}
-          job-name: 'Deploy'
-          security-result-attributes:  '{"scanner": "Checkmarx SAST", "projectId": "","securityToolId": ""}'
+            # DevOps Integration Token of GitHub tool created in ServiceNow instance for token based authentication.
+            devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
+            # ServiceNow Instance URL
+            instance-url: ${{ secrets.SN_INSTANCE_URL }}
+            # Orchestration Tool Id
+            tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+            # GitHub Context
+            context-github: ${{ toJSON(github) }}
+            # Display Name of the Job
+            job-name: 'ServiceNow Security Scan Results'
+            security-result-attributes: '{"scanner": "Checkmarx SAST", "projectId": "", "securityToolId": ""}'
+            # scanner: Scanning tool and is required e.g. Checkmarx SAST.
+            # projectId: Id of your Checkmarx SAST project and is required. This attribute is applicable only for Checkmarx SAST.
+            # securityToolId: Security tool onboarded in ServiceNow (sys_id of the onboarded security tool) and is optional.
 ```
-
+  devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
 # For Basic Authentication at ServiceNow instance
 
 ### GitHub-Veracode:
 ```yaml
-deploy:
-    name: Deploy
-    needs: <upstream job>
+  ServiceNowSecurityScanResults:
+    # type of machine to run the job on
     runs-on: ubuntu-latest
-    steps:     
+    name: ServiceNow Security Scan Results
+    steps:
       - name: ServiceNow DevOps Security Results
-        uses: ServiceNow/servicenow-devops-security-result@v3.0.0
+        uses: ServiceNow/servicenow-devops-security-result@v2.0.0
         with:
-          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
-          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
-          instance-url: ${{ secrets.SN_INSTANCE_URL }}
-          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-          context-github: ${{ toJSON(github) }}
-          job-name: 'Deploy'
-          security-result-attributes:  '{"scanner": "Veracode", "applicationName": "", "buildVersion": "",  "securityToolId": ""}'
+            # Devops Integration User Name
+            devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
+            # Devops Integration User Password
+            devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+            # ServiceNow Instance URL
+            instance-url: ${{ secrets.SN_INSTANCE_URL }}
+            # Orchestration Tool Id
+            tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+            # GitHub Context
+            context-github: ${{ toJSON(github) }}
+            # Display Name of the Job
+            job-name: 'ServiceNow Security Scan Results'
+            security-result-attributes: '{"scanner": "Veracode", "applicationName": "", "buildVersion": "", "securityToolId": ""}'
+            # scanner: Scanning tool and is required e.g. Veracode.
+            # applicationName: Name of your Veracode application and is required. This attribute is applicable only for Veracode.
+            # buildVersion: Veracode Scan name / build version and is optional. This attribute is applicable only for Veracode.
+            # securityToolId: Security tool onboarded in ServiceNow (sys_id of the onboarded security tool) and is optional.
 ```
 
 ### GitHub-Checkmarx One:
 ```yaml
-deploy:
-    name: Deploy
-    needs: <upstream job>
+  ServiceNowSecurityScanResults:
+    # type of machine to run the job on
     runs-on: ubuntu-latest
-    steps:     
+    name: ServiceNow Security Scan Results
+    steps:
       - name: ServiceNow DevOps Security Results
-        uses: ServiceNow/servicenow-devops-security-result@v3.0.0
+        uses: ServiceNow/servicenow-devops-security-result@v2.0.0
         with:
-          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
-          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
-          instance-url: ${{ secrets.SN_INSTANCE_URL }}
-          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-          context-github: ${{ toJSON(github) }}
-          job-name: 'Deploy'
-          security-result-attributes:  '{"scanner": "Checkmarx One", "projectName": "", "projectId": "", "scanId":"", "securityToolId": ""}'
+            # Devops Integration User Name
+            devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
+            # Devops Integration User Password
+            devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+            # ServiceNow Instance URL
+            instance-url: ${{ secrets.SN_INSTANCE_URL }}
+            # Orchestration Tool Id
+            tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+            # GitHub Context
+            context-github: ${{ toJSON(github) }}
+            # Display Name of the Job
+            job-name: 'ServiceNow Security Scan Results'
+            security-result-attributes: '{"scanner": "Checkmarx One", "projectName": "", "projectId": "", "scanId": "", "securityToolId": ""}'
+            # scanner: Scanning tool and is required e.g. Checkmarx One.
+            # projectName/projectId: Name/Id of your Checkmarx One project and is required. This attribute is applicable only for Checkmarx One.
+            # scanId: Checkmarx One scan id and is optional. This attribute is applicable only for Checkmarx One.
+            # securityToolId: Security tool onboarded in ServiceNow (sys_id of the onboarded security tool) and is optional.
 ```
 
 ### GitHub-Checkmarx SAST:
 ```yaml
-deploy:
-    name: Deploy
-    needs: <upstream job>
+  ServiceNowSecurityScanResults:
+    # type of machine to run the job on
     runs-on: ubuntu-latest
-    steps:     
+    name: ServiceNow Security Scan Results
+    steps:
       - name: ServiceNow DevOps Security Results
-        uses: ServiceNow/servicenow-devops-security-result@v3.0.0
+        uses: ServiceNow/servicenow-devops-security-result@v2.0.0
         with:
-          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
-          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
-          instance-url: ${{ secrets.SN_INSTANCE_URL }}
-          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-          context-github: ${{ toJSON(github) }}
-          job-name: 'Deploy'
-          security-result-attributes:  '{"scanner": "Checkmarx SAST", "projectId": "","securityToolId": ""}'
+            # Devops Integration User Name
+            devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
+            # Devops Integration User Password
+            devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+            # ServiceNow Instance URL
+            instance-url: ${{ secrets.SN_INSTANCE_URL }}
+            # Orchestration Tool Id
+            tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+            # GitHub Context
+            context-github: ${{ toJSON(github) }}
+            # Display Name of the Job
+            job-name: 'ServiceNow Security Scan Results'
+            security-result-attributes: '{"scanner": "Checkmarx SAST", "projectId": "", "securityToolId": ""}'
+            # scanner: Scanning tool and is required e.g. Checkmarx SAST.
+            # projectId: Id of your Checkmarx SAST project and is required. This attribute is applicable only for Checkmarx SAST.
+            # securityToolId: Security tool onboarded in ServiceNow (sys_id of the onboarded security tool) and is optional.
 ```
 The values for secrets should be setup in Step 1. Secrets should be created in Step 2.
 
